@@ -1,0 +1,34 @@
+<!doctype html>
+
+{% if id_loan %}
+
+    <title>Info loan {{ id_loan }}</title>
+    <h1>Id loan : {{ id_loan }}</h1>
+    <a href="/">Choose another one</a></br>
+
+    <h2>Informations</h2>
+    <ul>
+        {%for col in info_loan%}
+            <li>{{ col }} : {{ info_loan[col] }}</li>
+        {%endfor%}
+    </ul>
+
+    <h2>Solvency : {{ solvency }}</h2>
+    <figure>
+        <img src='images/pieplot_solvency.png' alt=' pieplot solvency in /images' width="200" height="200">
+        <img src='images/feat_imp.png' alt=' feature importance in /images' width="200" height="200">
+    </figure>
+
+    <h2>Similarity</h2>
+    {{ similarity|safe }}
+
+{% else %}
+
+    <title>Welcome here !</title>
+    <h1>Enter the loan id :</h1>
+    <form action="{{ url_for('index') }}" method="post">
+        <input type="text" name="id_loan">
+        <input type="submit">
+    </form>
+
+{% endif %}
