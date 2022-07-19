@@ -7,7 +7,7 @@ import pickle
 
 # Init server
 server = Flask(__name__)
-server.config['DEBUG'] = True
+server.config['DEBUG'] = False
 
 # Récupération des données
 df = pd.read_csv('packages/ressources/app_encoded.csv', sep=',', index_col=0, encoding='utf8')
