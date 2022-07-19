@@ -6,12 +6,12 @@ import plotly.graph_objs as go
 from dash import dash_table, dcc, html
 from dash.dependencies import Input, Output
 from packages.functions import get_feature_importance, get_info_loan, get_similarity, get_solvency
-from . import dash_app, df_no_transformation, num_columns, x_test_transformed
+from . import app, df_no_transformation, num_columns, x_test_transformed
 
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
-dash_app.layout = html.Div([
+app.layout = html.Div([
 
     dcc.Tabs([
         # Premier onglet: Solvency
@@ -114,7 +114,7 @@ dash_app.layout = html.Div([
 ])
 
 # Met à jour les informations du client
-@dash_app.callback(
+@app.callback(
     Output('info-loan', 'children'),
     [Input('id-loan', 'value')])
 def update_info_loan(id_loan):
@@ -124,7 +124,7 @@ def update_info_loan(id_loan):
     ])
 
 # Met à jour le pieplot de la solvabilité du client
-@dash_app.callback(
+@app.callback(
     Output('solvency', 'figure'),
     [Input('id-loan', 'value')])
 def update_pieplot_solvency(id_loan):
@@ -139,7 +139,7 @@ def update_pieplot_solvency(id_loan):
 
 # Met à jour le graphique de l'importance des features pour
 # le client dont l'id est séléctionné
-@dash_app.callback(
+@app.callback(
     Output('graph', 'figure'),
     [Input('id-loan', 'value')])
 def update_barplot_feat_imp(id_loan) :
@@ -154,7 +154,7 @@ def update_barplot_feat_imp(id_loan) :
 
 # Met à jour le tableau de prêts similaires
 # au prêt dont l'id est choisi
-@dash_app.callback(
+@app.callback(
     Output('table', 'data'),
     [Input('id-loan', 'value')])
 def update_table_similarity(id_loan):
@@ -162,7 +162,7 @@ def update_table_similarity(id_loan):
     return df_similarity.to_dict('records')
 
 # Met à jour le graphe pour l'exploration de données
-@dash_app.callback(
+@app.callback(
     Output('indicator-graphic', 'figure'),
     [Input('xaxis-column', 'value'),
     Input('yaxis-column', 'value'),

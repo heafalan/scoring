@@ -40,11 +40,11 @@ num_columns = df_no_transformation.select_dtypes(include=['float64']).columns
 
 # Init dashboard
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-dash_app = dash.Dash(__name__,
+app = dash.Dash(__name__,
                 server=server,
                 routes_pathname_prefix='/dash/',
                 external_stylesheets=external_stylesheets)
-dash_app.config['suppress_callback_exceptions']=True
+app.config['suppress_callback_exceptions']=True
 
 from packages import dashboard, functions, routes
 
