@@ -1,1 +1,1 @@
-web: gunicorn wsgi:dash_app
+web: gunicorn wsgi:dash_app --timeout 60
