@@ -10,10 +10,10 @@ server = Flask(__name__)
 server.config['DEBUG'] = True
 
 # Récupération des données
-df = pd.read_csv('packages/ressources/app_encoded.csv', sep=',', index_col=0, encoding='utf8', nrows=10000)
+df = pd.read_csv('packages/ressources/app_encoded.csv', sep=',', index_col=0, encoding='utf8')
 df_no_transformation = pd.read_csv(
     'packages/ressources/app_no_encoded_featureengineering_missing_value.csv',
-    sep=',', index_col=0, encoding='utf8', nrows=10000)
+    sep=',', index_col=0, encoding='utf8')
 df_no_transformation = df_no_transformation.drop(columns=['Test'])
 
 # Récupération du modèle
