@@ -47,4 +47,3 @@ app = dash.Dash(__name__,
 app.config['suppress_callback_exceptions']=True
 
 from packages import dashboard, functions, routes
-
