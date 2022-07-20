@@ -24,6 +24,11 @@ def isFloat(var):
     except ValueError:
         return False
 
+def find_loan(id_loan):
+    if id_loan in df_no_transformation['SK_ID_CURR']:
+        return True
+    return False
+
 def get_info_loan(id_loan):
     result = dict()
     for col_name in list(informations_to_display):
