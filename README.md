@@ -1,7 +1,5 @@
 # Scoring
 
-> Implémentez un modèle de scoring
-
 ## Projet
 
 ### Contexte
@@ -17,7 +15,7 @@ L'entreprise souhaite mettre en oeuvre un outil de "scoring crédit" pour calcul
 
 De plus les chargés de relation client ont fait remonter le fait que les clients sont de plus en plus demandeurs de transparence vis-à-vis des décisions d’octroi de crédit. Cette demande de transparence des clients va tout à fait dans le sens des valeurs que l’entreprise veut incarner.
 
-Prêt à dépenser décide donc de développer un dashboard interactif pour que les chargés de relation client puissent à la fois expliquer de façon la plus transparente possible les décisions d’octroi de crédit, mais également permettre à leurs clients de disposer de leurs informations personnelles et de les explorer facilement. 
+Prêt à dépenser décide donc de développer un dashboard interactif pour que les chargés de relation client puissent à la fois expliquer de façon la plus transparente possible les décisions d’octroi de crédit, mais également permettre à leurs clients de disposer de leurs informations personnelles et de les explorer facilement.
 
 
 ### Données
@@ -39,6 +37,7 @@ Les données sont disponibles sur kaggle à [cette adresse](https://www.kaggle.c
 ```
 scoring
 ├─ images
+|   └─ logo_company.png
 ├─ packages
 |   ├─ ressources
 |   |     ├─  app_encoded.csv
@@ -66,3 +65,9 @@ scoring
 - Les différents outils qui nécessitent des versions précises sont indiqués dans le fichier `requirements.txt`.
 - Le projet a entièrement été développé, testé et déployé sous *Linux*. Cela risque des comportements différents sous un environnement *MacOS* ou *Windows*.
 - Cette application est déployé avec *Heroku* à l'adresse suivante : [http://nh-p7-scoring.herokuapp.com/](https://nh-p7-scoring.herokuapp.com/)
+
+
+### Utilisation
+
+Une note méthodologique pour le pré-traitement et la modélisation a été rédigée mais non publiée dans ce repo.  
+En ce qui concerne l'exécution du projet, vous pouvez le télécharger et le déployer en local en exécutant le fichier `wsgi.py` (à condition d'avoir bien évidemment, tous les packages nécessaires dans un environnement *Linux*).
