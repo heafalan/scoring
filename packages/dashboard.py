@@ -176,13 +176,12 @@ def update_graph_data_exploration(xaxis_column, yaxis_column, xaxis_type, yaxis_
             x=filtered_df[xaxis_column],
             y=filtered_df[yaxis_column],
             text=filtered_df['SK_ID_CURR'],
-            labels=['Solvent', 'Insolvent'],
             mode='markers',
             opacity=0.7,
             marker={
                 'color':list(filtered_df['TARGET'].map({1.0: '#e74c3c', 0.0: '#2ecc71'}).values),
                 'size': 5,
-                'line': {'width': 0.15, 'color': 'white'}
+                'line': {'width': 0.10, 'color': 'white'}
             },
         ))
     return {
