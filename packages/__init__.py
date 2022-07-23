@@ -19,6 +19,9 @@ df_no_transformation = df_no_transformation.drop(columns=['Test'])
 # Récupération du modèle
 clf_pipe = pickle.load(open('packages/ressources/banking_model.pkl', 'rb'))
 
+# Seuil de solvabilité
+solvency_threshold = 0.93
+
 # Préparation du dataset avec les features selectionnés
 x_test_transformed = pd.DataFrame(
     clf_pipe[0].transform(df.drop(columns=['TARGET', 'Test', 'SK_ID_CURR'])),

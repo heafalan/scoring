@@ -6,7 +6,7 @@ import plotly.graph_objs as go
 from dash import dash_table, dcc, html
 from dash.dependencies import Input, Output
 from packages.functions import get_feature_importance, get_info_loan, get_similarity, get_solvency
-from . import app, df_no_transformation, num_columns, x_test_transformed
+from . import app, df_no_transformation, num_columns, solvency_threshold, x_test_transformed
 
 import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -35,6 +35,7 @@ app.layout = html.Div([
                 # sous forme de pie plot
                 html.Div([
                     html.H3("Probability of Solvency"),
+                    html.H5("Solvency threshold : "+ str(solvency_threshold)),
                     dcc.Graph(
                         id='solvency',
                         figure={},
@@ -129,8 +130,12 @@ def update_info_loan(id_loan):
     [Input('id-loan', 'value')])
 def update_pieplot_solvency(id_loan):
     values = get_solvency(id_loan)
+    if values[0] > solvency_threshold:
+        solvency_result = ['SOLVENT', 'Insolvent']
+    else:
+        solvency_result = ['Solvent', 'INSOLVENT']
     return {
-        'data': [go.Pie(labels=['Solvent', 'Insolvent'],
+        'data': [go.Pie(labels=solvency_result,
                         values=values,
                         marker_colors=["#2ecc71", "#e74c3c"],
                         hole=.3)],

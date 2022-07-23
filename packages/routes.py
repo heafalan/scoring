@@ -1,5 +1,5 @@
 from flask import render_template, request
-from . import functions, server
+from . import functions, server, solvency_threshold
 import os
 import plotly.graph_objs as go
 
@@ -24,7 +24,8 @@ def index(id_loan=None):
                 layout=go.Layout(margin=dict(b=100))
             )
             fig.write_image('images/pieplot_solvency.png')
-            if solvency[0] > 0.80:
+            # Seuil provenant de l'optimisation (cf. 'notebook preprocess_model.ipynb')
+            if solvency[0] > solvency_threshold:
                 solvency_result = str(round(solvency[0],4)*100)+'% - Solvent'
             else:
                 solvency_result = str(round(solvency[0],4)*100)+'% - Insolvent'
