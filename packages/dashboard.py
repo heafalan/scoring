@@ -153,7 +153,7 @@ def update_barplot_feat_imp(id_loan) :
         'data': [go.Bar(x=data["values"],
                         y=data.index,
                         orientation='h',
-                        marker_color=list(data.positive.map({True: '#e74c3c', False: '#2ecc71'}).values))],
+                        marker_color=list(data.positive.map({True: '#2ecc71', False: '#e74c3c'}).values))],
         'layout': go.Layout(margin=dict(l=300, r=0, t=30, b=100))
     }
 
